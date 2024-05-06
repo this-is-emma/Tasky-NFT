@@ -1,0 +1,19 @@
+{
+    "name": "LEARN",
+    "description": "Learn something new, a skill, a recipe, you pick",
+    "image" : "ipfs://QmVGrnQUnANdYyz7kzx5cK8CSTykDcXZkFUrT9wLRaf2tY",
+    "attributes": [
+        {
+            "type": "Priority",
+            "value": "Medium"
+        },
+        {
+            "type": "Timeline",
+            "value": "4 months"
+        },
+        {
+            "type": "solo-activity",
+            "value": "false"
+        }
+    ]
+}

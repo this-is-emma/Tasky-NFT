@@ -1,0 +1,19 @@
+{
+    "name": "INVEST",
+    "description": "In Stocks? In others? But remember, only invest what you can afford to lose",
+    "image" : "ipfs://QmcZUfTuZxQYrWxcQYKbM2yTnrsZQLVxuta6iDaifWJyQk",
+    "attributes": [
+        {
+            "type": "Priority",
+            "value": "Low"
+        },
+        {
+            "type": "Timeline",
+            "value": "24 months"
+        },
+        {
+            "type": "solo-activity",
+            "value": "true"
+        }
+    ]
+}

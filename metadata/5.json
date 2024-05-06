@@ -1,0 +1,19 @@
+{
+    "name": "GET YOURSELF CHECKED!",
+    "description": "It's time for a health check up! Gotta take care of yourself",
+    "image" : "ipfs://QmTsvpGJbhMkusBFDX9MZF4E5xxwkbbFjjsS63oG7ARYbg",
+    "attributes": [
+        {
+            "type": "Priority",
+            "value": "High"
+        },
+        {
+            "type": "Timeline",
+            "value": "2 months"
+        },
+        {
+            "type": "solo-activity",
+            "value": "true"
+        }
+    ]
+}

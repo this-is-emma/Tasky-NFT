@@ -1,0 +1,19 @@
+{
+    "name": "MEET PEOPLE",
+    "description": "Get out there and meet people from all horizons",
+    "image" : "ipfs://QmRMcQE1rQbDxqu7hzsFZCPU9SiDrUFmZ5mdpgdSM5YjDc",
+    "attributes": [
+        {
+            "type": "Priority",
+            "value": "High"
+        },
+        {
+            "type": "Timeline",
+            "value": "12 months"
+        },
+        {
+            "type": "solo-activity",
+            "value": "false"
+        }
+    ]
+}

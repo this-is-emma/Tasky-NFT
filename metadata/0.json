@@ -1,0 +1,19 @@
+{
+    "name": "TRAVEL",
+    "description": "See the world!",
+    "image": "ipfs://QmT375hySiziCg9BnQjPyQprarHqJ2rtMhmzjxDw9dmbwZ",
+    "attributes": [
+        {
+            "type": "Priority",
+            "value": "Medium"
+        },
+        {
+            "type": "Timeline",
+            "value": "12 months"
+        },
+        {
+            "type": "solo-activity",
+            "value": "true"
+        }
+    ]
+}
