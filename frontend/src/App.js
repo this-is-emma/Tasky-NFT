@@ -1,11 +1,6 @@
-const { Web3 } = require("web3");
-
-const web3 = new Web3(
-  new Web3.providers.HttpProvider(
-    "https://holesky.infura.io/v3/fe425125233a4704b5023dd473868762"
-  )
-);
-
+import React, { useEffect, useState } from 'react';
+import Web3 from 'web3';
+import './styles.css';
 
 const tokenURIABI = [
     {
@@ -533,27 +528,68 @@ const tokenURIABI = [
       "stateMutability": "nonpayable",
       "type": "function"
     }
-]
-const tokenContract = "0x44f5F09Cf0BDAFBc7DA49CA6662D45FEB5C17fb2";
-const tokenId = 1;
+];
 
-const contract = new web3.eth.Contract(tokenURIABI, tokenContract);
+const tokenContractAddress = "0x44f5F09Cf0BDAFBc7DA49CA6662D45FEB5C17fb2";
 
-async function getNFTMetadata() {
-  const result = await contract.methods.tokenURI(tokenId).call();
-  console.log(result);
+function YourComponent() {
+    const [web3, setWeb3] = useState(null);
+    const [contract, setContract] = useState(null);
+    const [tokenIdInput, setTokenIdInput] = useState('');
+    const [metadata, setMetadata] = useState('');
+
+    useEffect(() => {
+        const initWeb3 = async () => {
+            if (window.ethereum) {
+                const _web3 = new Web3(window.ethereum);
+                try {
+                    // Request account access if needed
+                    await window.ethereum.enable();
+                    setWeb3(_web3);
+                } catch (error) {
+                    console.error('User denied account access');
+                }
+            } else if (window.web3) {
+                // Legacy dapp browsers...
+                const _web3 = new Web3(window.web3.currentProvider);
+                setWeb3(_web3);
+            } else {
+                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            }
+        };
+
+        initWeb3();
+
+        return () => {
+            // Cleanup function if needed
+        };
+    }, []);
+
+    useEffect(() => {
+        if (web3) {
+            const _contract = new web3.eth.Contract(tokenURIABI, tokenContractAddress);
+            setContract(_contract);
+        }
+    }, [web3]);
+
+    const handleChange = (e) => {
+        setTokenIdInput(e.target.value);
+    };
+
+    const getNFTMetadata = async () => {
+        if (contract && tokenIdInput !== '') {
+            const result = await contract.methods.tokenURI(tokenIdInput).call();
+            setMetadata(result);
+        }
+    };
+
+    return (
+        <div className="container">
+            <input type="number" className="input-field" value={tokenIdInput} onChange={handleChange} min="0" max="4" step="1" />
+            <button className="button" onClick={getNFTMetadata}>Get NFT Metadata</button>
+            <p className="result">{metadata}</p>
+        </div>
+    );
 }
 
-async function mint(ownerAddress) {
-  const result = await contract.methods.safeMint(ownerAddress).call();
-  console.log(result);
-}
-
-getNFTMetadata();
-
-// mint('0xb83EBDF69De784e2371e100301FaBb87b85B450f')
-
-module.exports = {
-  getNFTMetadata,
-  mint,
-};
+export default YourComponent;
